@@ -1,0 +1,24 @@
+.basket-product-price {
+  color: var(--lightblue);
+}
+
+.total-price {
+  color: var(--lightblue);
+  border: 2px solid var(--lightblue);
+  border-radius: 2px;
+}
+
+.operator-icon {
+  color: var(--lightblue);
+}
+
+.operator-icon:hover {
+  color: var(--bluehovered);
+}
+
+.counter {
+  width: 50%;
+  height: 50%;
+  background-color: var(--lightblue);
+  color: white;
+}
