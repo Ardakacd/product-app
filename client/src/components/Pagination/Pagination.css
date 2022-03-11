@@ -1,0 +1,33 @@
+.blue-colored {
+  color: var(--lightblue);
+}
+
+.gray-colored {
+  color: var(--darkgray);
+}
+
+.non-text-decorated {
+  text-decoration: none;
+}
+
+.white-colored {
+  color: white;
+}
+
+.selected-page {
+  background-color: var(--lightblue);
+}
+.page-item {
+  padding: 0.5rem;
+}
+.page-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+}
+
+.blue-hovored:hover {
+  color: var(--bluehovered);
+}
