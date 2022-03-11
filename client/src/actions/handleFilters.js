@@ -9,7 +9,7 @@ import {
 const handleFilters = (type, filter, isAdded = null) => {
   return function (dispatch, getState) {
     let allFilters = { ...getState().filters };
-    console.log(allFilters);
+
     switch (type) {
       case "Sorting":
         arrangeSortFilter(allFilters, filter);
@@ -28,7 +28,7 @@ const handleFilters = (type, filter, isAdded = null) => {
     }
 
     let wholeQuery = `?${allFilters.itemType}${allFilters.brands}${allFilters.tags}${allFilters.sorting}`;
-    console.log(wholeQuery);
+
     axios
       .get(`http://localhost:3001/items${wholeQuery}`)
       .then((res) => {

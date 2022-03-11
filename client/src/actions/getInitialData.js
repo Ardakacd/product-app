@@ -19,13 +19,15 @@ const getInitialData = () => {
         const items = results[0];
         const brands = results[1];
         const allItems = results[2];
+
+        //Collect all unique tags from items tag attribute.
         const uniqTags = allItems.data.reduce(function (prev, curr) {
           return _.union(prev, curr.tags);
         }, []);
+
         const objectTags = [];
         uniqTags.map((tag) => objectTags.push({ name: tag }));
-        console.log(brands);
-        console.log(objectTags);
+
         dispatch({
           type: "GET_INITIAL_DATA",
           payload: { items: items.data, brands: brands.data, tags: objectTags },

@@ -13,15 +13,15 @@ const App = ({ getInitialData, items }) => {
   const loadingSpinner = () => {
     return (
       <div className="d-flex align-items-center justify-content-center mt-4">
-        <div class="spinner-border text-primary" role="status">
-          <span class="sr-only">Loading...</span>
+        <div className="spinner-border text-primary" role="status">
+          <span className="sr-only">Loading...</span>
         </div>
       </div>
     );
   };
   useEffect(() => {
     getInitialData();
-  }, []);
+  }, [getInitialData]);
   return (
     <React.Fragment>
       <Header />
