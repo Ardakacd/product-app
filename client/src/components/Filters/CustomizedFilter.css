@@ -1,0 +1,81 @@
+.filter-header {
+  color: var(--darkgray);
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.filter-content {
+  background-color: white;
+  font-size: 0.8rem;
+}
+
+.data-content {
+  max-height: 7rem;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+input[type="radio"] {
+  appearance: none;
+  border: 2px solid var(--lightgray);
+  width: 1.3rem;
+  height: 1.3rem;
+  content: none;
+  outline: none;
+
+  border-radius: 50%;
+  margin-right: 0.5rem;
+}
+
+input[type="radio"]:checked {
+  appearance: none;
+  outline: none;
+  padding: 0;
+  content: none;
+  border: none;
+}
+
+input[type="radio"]:checked::before {
+  position: relative;
+  color: var(--lightblue) !important;
+  content: "\00A0\2713\00A0" !important;
+  border: 2px solid var(--lightblue);
+  border-radius: 50%;
+
+  padding: 0;
+  font-weight: bolder;
+  font-size: 0.75rem;
+}
+
+input[type="checkbox"] {
+  appearance: none;
+  border: 2px solid var(--lightgray);
+  width: 1.3rem;
+  height: 1.3rem;
+  content: none;
+  outline: none;
+  margin-right: 0.5rem;
+}
+
+input[type="checkbox"]:checked {
+  appearance: none;
+  outline: none;
+  padding: 0;
+  content: none;
+  border: none;
+}
+
+input[type="checkbox"]:checked::before {
+  position: relative;
+  background-color: var(--lightblue);
+  color: white !important;
+  border: 2px solid var(--lightblue);
+  border-bottom: 4px solid var(--lightblue);
+  border-right: 0px;
+  content: "\00A0\2713\00A0" !important;
+  width: 1.3rem;
+  height: 1.3rem;
+  padding: 0;
+  font-size: 0.8rem;
+}

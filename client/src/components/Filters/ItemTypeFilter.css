@@ -1,0 +1,19 @@
+.selected-type {
+  background-color: var(--lightblue);
+  color: white;
+  border-radius: 2px;
+}
+
+.selected-type:hover {
+  background-color: var(--bluehovered);
+}
+
+.unselected-type {
+  background-color: #f2f0fd;
+  color: var(--lightblue);
+  border-radius: 2px;
+}
+
+.unselected-type:hover {
+  background-color: var(--grayhovered);
+}
