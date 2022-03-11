@@ -2,6 +2,11 @@ import React from "react";
 import { connect } from "react-redux";
 import handleSelected from "../../actions/handleSelectedItems";
 import "./Basket.css";
+import PropTypes from "prop-types";
+
+/**
+ * Component that displays selected items.
+ */
 const Basket = ({ selectedItems, handleSelected }) => {
   const renderItem = (item, index) => {
     return (
@@ -51,6 +56,13 @@ const Basket = ({ selectedItems, handleSelected }) => {
       )}
     </div>
   );
+};
+
+Basket.propTypes = {
+  /** List of the items in the basket. */
+  items: PropTypes.array,
+  /** Action creator that changes the items in the basket.  */
+  handleSelected: PropTypes.func,
 };
 
 const mapStateToProps = (state) => {

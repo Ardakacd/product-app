@@ -1,5 +1,9 @@
 import React from "react";
 import Basket from "../Basket/Basket";
+
+/**
+ * Basket modal for responsive design. Only appears in mobile or tablet.
+ */
 const BasketModal = () => {
   return (
     <React.Fragment>
@@ -15,7 +19,7 @@ const BasketModal = () => {
       <div
         className="modal fade"
         id="basketModal"
-        tabindex="-1"
+        tabIndex="-1"
         aria-labelledby="basketModalLabel"
         aria-hidden="true"
       >

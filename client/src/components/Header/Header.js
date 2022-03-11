@@ -1,6 +1,10 @@
 import "./Header.css";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
+/**
+ * Header of the page.
+ */
 const Header = ({ totalPrice }) => {
   return (
     <header>
@@ -21,6 +25,11 @@ const Header = ({ totalPrice }) => {
       </nav>
     </header>
   );
+};
+
+Header.propTypes = {
+  /** Sum of the prices of the items in the basket */
+  totalPrice: PropTypes.number,
 };
 
 const mapStateToProps = (state) => {

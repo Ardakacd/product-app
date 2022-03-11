@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";
 import "./Pagination.css";
+import PropTypes from "prop-types";
+
+/**
+ * Component that displays list of pages using React Paginate.
+ */
 const Pagination = ({ items, setSelectedItems }) => {
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
@@ -25,7 +30,7 @@ const Pagination = ({ items, setSelectedItems }) => {
     const endOffset = itemOffset + itemsPerPage;
     setSelectedItems(items.slice(itemOffset, endOffset));
     setPageCount(Math.ceil(items.length / itemsPerPage));
-  }, [itemOffset, items]);
+  }, [itemOffset, items, setSelectedItems]);
   const handlePageClick = (event) => {
     const newOffset = (event.selected * itemsPerPage) % items.length;
     console.log(
@@ -54,22 +59,14 @@ const Pagination = ({ items, setSelectedItems }) => {
         renderOnZeroPageCount={null}
       />
     </div>
-    /*
-    <div className="d-flex flex-row justify-content-center">
-      <div className="d-flex flex-row justify-content-between">
-        <div className="d-flex flex-row align-items-center blue-colored">
-          <i className="fa-solid fa-arrow-left me-2 "></i>
-          <p className="mb-0">Prev</p>
-        </div>
-        <div>{renderPageNumber}</div>
-        <div className="d-flex flex-row align-items-center gray-colored">
-          <p className="mb-0">Next</p>
-          <i className="fa-solid fa-arrow-right ms-2 "></i>
-        </div>
-      </div>
-    </div>
-    */
   );
+};
+
+Pagination.propTypes = {
+  /** List of the the items that come from ItemList component. */
+  items: PropTypes.array,
+  /** Function that sets the products that need to be displayed according to the page number. */
+  setSelectedItems: PropTypes.func,
 };
 
 export default Pagination;

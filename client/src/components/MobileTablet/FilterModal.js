@@ -1,6 +1,9 @@
 import React from "react";
 import Filter from "../Filters/Filters";
 
+/**
+ * Filter modal for responsive design. Only appears in mobile or tablet.
+ */
 const FilterModal = () => {
   return (
     <React.Fragment>
@@ -16,7 +19,7 @@ const FilterModal = () => {
       <div
         className="modal fade"
         id="filterModal"
-        tabindex="-1"
+        tabIndex="-1"
         aria-labelledby="filterModalLabel"
         aria-hidden="true"
       >
@@ -33,7 +36,7 @@ const FilterModal = () => {
                 aria-label="Close"
               ></button>
             </div>
-            <div class="modal-body">
+            <div className="modal-body">
               <Filter />
             </div>
           </div>

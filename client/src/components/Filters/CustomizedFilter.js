@@ -1,5 +1,11 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import "./CustomizedFilter.css";
+import PropTypes from "prop-types";
+
+/**
+ *
+ * Common component for other filter components.
+ */
 const CustomizedFilter = ({
   header,
   inputType,
@@ -10,13 +16,16 @@ const CustomizedFilter = ({
   let isAllSelected = true;
   const allOptionRef = useRef();
   const otherOptionsRef = useRef([]);
+  const [searchFilter, setSearchFilter] = useState("");
 
-  const renderItem = (item, index) => {
+  const renderItem = (item, index, isDisplayed) => {
     if (item.initiallyChecked) {
       return (
         <div
           key={item.name}
-          className="form-check d-flex flex-row align-items-center p-0"
+          className={`form-check d-flex flex-row align-items-center p-0 ${
+            isDisplayed ? "" : "d-none"
+          }`}
         >
           <input
             type={inputType}
@@ -37,7 +46,7 @@ const CustomizedFilter = ({
                 event.target.checked === true
               ) {
                 otherOptionsRef.current.map((elem) => {
-                  elem.checked = false;
+                  return (elem.checked = false);
                 });
                 isAllSelected = true;
               }
@@ -52,7 +61,9 @@ const CustomizedFilter = ({
       return (
         <div
           key={item.name}
-          className="form-check d-flex flex-row align-items-center p-0"
+          className={`form-check d-flex flex-row align-items-center p-0 ${
+            isDisplayed ? "" : "d-none"
+          }`}
         >
           <input
             type={inputType}
@@ -100,6 +111,9 @@ const CustomizedFilter = ({
                 className="form-control shadow-none"
                 id="filterForm"
                 placeholder={placeholderValue}
+                onChange={(event) =>
+                  setSearchFilter(event.target.value.toLowerCase())
+                }
               />
             </div>
           </form>
@@ -108,9 +122,17 @@ const CustomizedFilter = ({
         <div className={`${inputType === "checkbox" ? "data-content" : ""}`}>
           <form>
             {header !== "Sorting"
-              ? renderItem({ name: "All", initiallyChecked: true }, -1)
+              ? "all".startsWith(searchFilter)
+                ? renderItem({ name: "All", initiallyChecked: true }, -1, true)
+                : renderItem({ name: "All", initiallyChecked: true }, -1, false)
               : ""}
-            {data.map((item, index) => renderItem(item, index))}
+            {data.map((item, index) => {
+              if (item.name.toLowerCase().startsWith(searchFilter)) {
+                return renderItem(item, index, true);
+              } else {
+                return renderItem(item, index, false);
+              }
+            })}
           </form>
         </div>
       </div>
@@ -118,9 +140,22 @@ const CustomizedFilter = ({
   );
 };
 
+CustomizedFilter.propTypes = {
+  /** Text that is displayed at the top of the filter. */
+  header: PropTypes.string,
+  /** Type attribute of the input. Either checkbox or radio. */
+  inputType: PropTypes.string,
+  /** Placeholder value for text input. */
+  placeholderValue: PropTypes.string,
+  /** List of the filter elements. */
+  data: PropTypes.array,
+  /** Function that is executed when checkbox or radio is clicked. This function is implemented in the parent component. */
+  clickedTag: PropTypes.func,
+};
+
 CustomizedFilter.defaultProps = {
   inputType: "checkbox",
-  placeholderValue: null,
+  placeholderValue: "",
 };
 
 export default CustomizedFilter;

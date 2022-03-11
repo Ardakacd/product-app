@@ -2,6 +2,12 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import handleFilters from "../../actions/handleFilters";
 import "./ItemTypeFilter.css";
+import PropTypes from "prop-types";
+
+/**
+ * Component that displays all the item types. Either mug or shirt.
+ *
+ */
 const ItemTypeFilter = ({ handleFilters }) => {
   const [selectedType, setSelectedType] = useState("mug");
   const itemTypeLabel = ["mug", "shirt"];
@@ -27,6 +33,11 @@ const ItemTypeFilter = ({ handleFilters }) => {
       })}
     </div>
   );
+};
+
+ItemTypeFilter.propTypes = {
+  /** Action creator that changes filters in the app.  */
+  handleFilter: PropTypes.func,
 };
 
 export default connect(null, { handleFilters })(ItemTypeFilter);

@@ -1,6 +1,12 @@
 import CustomizedFilter from "./CustomizedFilter";
 import { connect } from "react-redux";
 import handleFilters from "../../actions/handleFilters";
+import PropTypes from "prop-types";
+
+/**
+ * Component that displays all the data that is needed for sorting.
+ *
+ */
 const SortingFilter = ({ handleFilters }) => {
   const data = [
     { id: 1, name: "Price low to high", initiallyChecked: true },
@@ -23,4 +29,8 @@ const SortingFilter = ({ handleFilters }) => {
   );
 };
 
+SortingFilter.propTypes = {
+  /** Action creator that changes filters in the app.  */
+  handleFilter: PropTypes.func,
+};
 export default connect(null, { handleFilters })(SortingFilter);

@@ -1,6 +1,10 @@
 import FilterModal from "./FilterModal";
 import BasketModal from "./BasketModal";
 import ItemList from "../Main/ItemList";
+
+/**
+ * Component that diplays layout for small devices.
+ */
 const MobileContent = () => {
   return (
     <div className="d-flex flex-column ">

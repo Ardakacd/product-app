@@ -4,12 +4,16 @@ import handleSelected from "../../actions/handleSelectedItems";
 import ItemTypeFilter from "../Filters/ItemTypeFilter";
 import Pagination from "../Pagination/Pagination";
 import { useState } from "react";
+import PropTypes from "prop-types";
+
+/**
+ * Component that displays items and related stuff to listing.
+ */
 const ItemList = ({ handleSelected, items }) => {
   const [selectedItems, setSelectedItems] = useState([]);
 
   const getSelectedItems = (items) => {
     setSelectedItems(items);
-    console.log(items);
   };
   const renderItem = (item, index) => {
     return (
@@ -50,6 +54,13 @@ const ItemList = ({ handleSelected, items }) => {
       <Pagination items={items} setSelectedItems={getSelectedItems} />
     </div>
   );
+};
+
+ItemList.propTypes = {
+  /** List of the items. */
+  items: PropTypes.array,
+  /** Action creator that changes the items in the basket.  */
+  handleSelected: PropTypes.func,
 };
 
 const mapStateToProps = (state) => {
